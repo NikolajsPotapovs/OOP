@@ -1,4 +1,10 @@
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 
@@ -13,7 +19,7 @@ public class Main{
     
     
     
-public static void main(String[] args) {
+public static void main(String[] args) throws IOException {
 
     
     InitialiseDoctors();
@@ -50,7 +56,7 @@ public static void PrintHeader(){
 }
 
 
-public static void PrintMenu(){
+public static void PrintMenu() throws IOException{
     
 
     System.out.println("\n1. Book an appointment.");
@@ -107,8 +113,8 @@ public static void PrintMenu(){
 
 
 
-public static void BookAnAppointmentMenu(){
-   // try{
+public static void BookAnAppointmentMenu() throws IOException{
+   
     keyboard.nextLine();
     System.out.println("Please Enter Patients First Name:");
     String firstName = keyboard.nextLine();
@@ -151,11 +157,7 @@ public static void BookAnAppointmentMenu(){
                                     System.out.println("\nThank you, appointment has been booked. Returning to main Menu:\n");
                                     
                                      Doctor d = doctor.get(0);
-//                 
-//              // d.replaceNull();
-//               System.out.println(Arrays.toString(d.slot));
-//                    
-//                                    
+                                    
                                     PrintMenu();
                                     break;
                                 case 2:
@@ -231,21 +233,7 @@ public static void BookAnAppointmentMenu(){
 
     
      }
-//    catch(InputMismatchException e){
-//        System.out.println("Please enter correct patients details");
-//        
-//        
-//    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-                    
+   
                     
                  static public boolean ChoseSlot(Patient p,String DoctorName, int options)	{
 		
@@ -270,7 +258,7 @@ public static void ChoseDoctor(){
 }
 
 
-public static void CancelAnAppointmentMenu(){
+public static void CancelAnAppointmentMenu() throws IOException{
     
     
     System.out.println("Please Provide patients First Name:");
@@ -305,58 +293,10 @@ public static void CancelAnAppointmentMenu(){
     
     
     
-    
-    
-    
-    
-//System.out.println("\nPlease select a Doctor:");
-//System.out.println("1. Dr. Emily Likova.");
-//System.out.println("2. Dr. Stephen Marganic.");
-//System.out.println("3. Dr. Seagal Handsome.");
-//System.out.println("4. Dr. Lily Win.");
-//System.out.println("5. Back.");
-//System.out.println("6. Exit.");
-//    
-//
-//    while (options != -1){
-//        options = keyboard.nextInt();
-//        
-//        switch(options){
-//           
-//            case 1:
-//                EmilyLikova();
-//            break;
-//            
-//            case 2: 
-//                StephenMarganic();
-//            break;
-//            
-//            case 3:
-//                SeagalHandsome();
-//            break;
-//            
-//            case 4:
-//                LilyWin();
-//            break;
-//            
-//            case 5:
-//                PrintMenu();
-//            break;
-//            
-//            case 6:
-//                System.out.println("\nThank you for using Woodland Medic Centre Appointment Application.");
-//                System.out.println("Good Bye.");
-//                Runtime.getRuntime().halt(0);
-//                
-//            default:
-//                System.out.println("Please select valid option.");
-//            break;
-//
-//}
-//    }
+ 
 }
 
-public static void ViewDoctorsScheduleMenu(){
+public static void ViewDoctorsScheduleMenu() throws IOException{
   
 System.out.println("\nPlease select a Doctor:");
 System.out.println("1. Dr. Emily Likova.");
@@ -364,8 +304,9 @@ System.out.println("2. Dr. Stephen Marganic.");
 System.out.println("3. Dr. Seagal Handsome.");
 System.out.println("4. Dr. Lily Win.");
 System.out.println("5. Entire Doctor Schedule.");
-System.out.println("6. Back.");
-System.out.println("7. Exit.");
+System.out.println("6. Entire Doctor Schedule Between Two Dates.");
+System.out.println("7. Back.");
+System.out.println("8. Exit.");
     
 
     while (options != -1){
@@ -376,7 +317,7 @@ System.out.println("7. Exit.");
             case 1:
                  
                Doctor d = doctor.get(0);
-//                 
+                 
                d.replaceNull();
                System.out.println(Arrays.toString(d.slotTimes));
                System.out.println(d.name+ "     " + Arrays.toString(d.availability));
@@ -387,7 +328,7 @@ System.out.println("7. Exit.");
             
             case 2: 
                d = doctor.get(1);
-//                 
+               
                d.replaceNull();
                System.out.println(Arrays.toString(d.slotTimes));
                System.out.println(d.name+ " " + Arrays.toString(d.availability));
@@ -396,7 +337,7 @@ System.out.println("7. Exit.");
                  
             case 3:
                 d = doctor.get(2);
-//                 
+                
                d.replaceNull();
                System.out.println(Arrays.toString(d.slotTimes));
                System.out.println(d.name+ "  " + Arrays.toString(d.availability));
@@ -404,7 +345,7 @@ System.out.println("7. Exit.");
             
             case 4:
                d = doctor.get(3);
-//                 
+                
                d.replaceNull();
                System.out.println(Arrays.toString(d.slotTimes));
                System.out.println(d.name + "         " + Arrays.toString(d.availability));
@@ -412,42 +353,67 @@ System.out.println("7. Exit.");
             
             case 5:
               
-//                for (int i = 0; i < doctor.size(); i++)
-//                {
-//                   d = doctor.get(i);
-//                   d.replaceNull();
-//                   System.out.println(Arrays.toString(d.slotTimes));
-//                  System.out.println(d.name +Arrays.toString(d.getSlots()));
-//                  
-//                  
-//                }
-               d = doctor.get(0);
-//                 
-               d.replaceNull();
-               System.out.println(Arrays.toString(d.slotTimes));
-               System.out.println(d.name+ "     " + Arrays.toString(d.availability));
-               d = doctor.get(1);
-//                 
-               d.replaceNull();
-               
-               System.out.println(d.name+ " " + Arrays.toString(d.availability));
-               d = doctor.get(2);
-//                 
-               d.replaceNull();
-               
-               System.out.println(d.name+ "  " + Arrays.toString(d.availability));
-               d = doctor.get(3);
-//                 
-               d.replaceNull();
-               
-               System.out.println(d.name + "         " + Arrays.toString(d.availability));
+               viewAllDoctorsAppointments();
+                
             break;
             
             case 6:
-                PrintMenu();
+                
+ 
+                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                 BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+                 System.out.println("Please input desired start date in format (DD/MM/YYYY):");
+                 String firstInput = reader.readLine();
+                 System.out.println("Please input desired start date in format (DD/MM/YYYY):");
+                 String secondInput = reader.readLine();
+                 LocalDate firstDate = LocalDate.parse(firstInput, formatter);
+                 LocalDate secondDate = LocalDate.parse(secondInput, formatter);
+                 long days = ChronoUnit.DAYS.between(firstDate, secondDate);
+                 System.out.println("\nDay interval choosen: " + days + "days.\n");
+                    
+                    if (firstDate.isAfter(secondDate)){
+                
+                        System.out.println("Please select correct start date.");
+                        ViewDoctorsScheduleMenu();
+                
+                    }
+                LocalDate start = LocalDate.from(firstDate);
+                LocalDate stop = LocalDate.from(secondDate);
+                LocalDate today = LocalDate.now();
+                Boolean containsToday = ( ! today.isBefore( start ) ) && ( today.isBefore( stop ) ) ;
+                    
+                
+                    
+                    for (  firstDate =  start; firstDate.isBefore(secondDate) || firstDate.equals(secondDate); firstDate = firstDate.plusDays(1)){
+                        
+                        
+                        
+                        
+                    if(containsToday = true && firstDate.equals(today)){
+                        
+                        System.out.println("\nAll doctors scedule for today " + today + " is: \n");
+                        viewAllDoctorsAppointments();
+                        
+                    }
+                    else{
+                        System.out.println("\nAll doctors scedule for " + firstDate + " date is:\n");
+                        System.out.println("[                     09:00,      10:00,     11:00,     12:00,     13:00,     14:00,     15:00]");
+                        System.out.println("Dr Emily Likova     [Available, Available, Available, Available, Available, Available, Available]");
+                        System.out.println("Dr Stephen Marganic [Available, Available, Available, Available, Available, Available, Available]");
+                        System.out.println("Dr Seagal Handsome  [Available, Available, Available, Available, Available, Available, Available]");
+                        System.out.println("Dr Lily Win         [Available, Available, Available, Available, Available, Available, Available]");
+                    }
+                    
+                    
+                }
+                    
             break;
             
             case 7:
+                PrintMenu();
+            break;
+            
+            case 8:
                 System.out.println("\nThank you for using Woodland Medic Centre Appointment Application.");
                 System.out.println("Good Bye.");
                 Runtime.getRuntime().halt(0);
@@ -463,12 +429,40 @@ System.out.println("7. Exit.");
 
 
 
-    
+    }   
+
+
+
+public static void viewAllDoctorsAppointments(){
+
+               Doctor d = doctor.get(0);
+                
+               d.replaceNull();
+               System.out.println(Arrays.toString(d.slotTimes));
+               System.out.println(d.name+ "     " + Arrays.toString(d.availability));
+               d = doctor.get(1);
+                 
+               d.replaceNull();
+               
+               System.out.println(d.name+ " " + Arrays.toString(d.availability));
+               d = doctor.get(2);
+                
+               d.replaceNull();
+               
+               System.out.println(d.name+ "  " + Arrays.toString(d.availability));
+               d = doctor.get(3);
+                 
+               d.replaceNull();
+               
+               System.out.println(d.name + "         " + Arrays.toString(d.availability));
+
 }
 
 
 
-public static void ViewPatientsAppointmentMenu(){
+
+
+public static void ViewPatientsAppointmentMenu() throws IOException{
 
     System.out.println("Please Provide patients First Name:");
 		keyboard.nextLine();
@@ -482,26 +476,14 @@ public static void ViewPatientsAppointmentMenu(){
     	{
     		Patient patient = d.slot[j];
                 
-                //for (int k = 0; k < d.slotTimes.length; k++){
                     for (int l = 0; l <d.availability.length; l++){
                       
                        
-                        
                 if (d.availability[l].equalsIgnoreCase("Unavailable")){
     		if (patient != null && patient.firstName.equalsIgnoreCase(f) && patient.surname.equalsIgnoreCase(s))
     		{	
-                    
-//                       {                    // have to pull time slot for appointment
-//                           
-//                           System.out.println(Arrays.toString(d.availability));
-//                       
-//                       }
-                     
-                    
-                    
-                        d.PrintDoctorDetails();
-                        //System.out.println("Slot time for appointment:" + d.slotTimes[k]);
-                        
+
+                        d.PrintDoctorDetails();                        
                         
                         System.out.println("Appointment slot time is:" + d.slotTimes[l]);
                         
@@ -518,39 +500,6 @@ public static void ViewPatientsAppointmentMenu(){
 }
 
 
-
-
-public static void BookAnAppointment(){
-
-
-}
-
-
-
-public static void CancelAnAppointment(){
-
-
-}
-
-
-public static void ViewDoctorsSchedule(){
-
-
-}
-
-public static void ViewPatientsAppointment(){
-
-
-}
-
-
-public static void InitialisePatients(){
-
-
-
-
-}
-
 public static void PrintSlotChoise(){
 System.out.println("\nPlease select a Time Slot:");
 System.out.println("1. 09:00");
@@ -562,7 +511,6 @@ System.out.println("6. 14:00");
 System.out.println("7. 15:00");
 System.out.println("8. Back.");
 System.out.println("9. Exit");
-//System.out.println("Please note, Doctors are on breake 13:00 - 14:00.");
 }
 
 
@@ -587,49 +535,3 @@ static public void DoctorAvailability(int options)
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-//public static void CheckDoctorsAvailability(){
-//    
-//    System.out.println("Doctors available for this slot are:");    
-//
-//if ("Available".equals(DrEmilyLikova.availability[options-1])){
-//                                    
-//         System.out.println("Dr Emily Likova");
-//         
-//         
-//  }
-//
-//if ("Available".equals(DrStephenMarganic.availability[options-1])){
-//                                    
-//         System.out.println("Dr Stephen Marganic");
-//  }
-//
-//if ("Available".equals(DrSeagalHandsome.availability[options-1])){
-//                                    
-//         System.out.println("Dr Seagal Handsome");
-//  }
-//
-//if ("Available".equals(DrLilyWin.availability[options-1])){
-//                                    
-//         System.out.println("Dr Lily Win");
-//  }
-//    
-//
-//
-//}
-
-
-
-
-
-
